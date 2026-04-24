@@ -10,7 +10,7 @@ export default function InputForm({ setResult }) {
       setLoading(true);
       const arr = input.split(",").map(i => i.trim());
 
-      const res = await axios.post("http://localhost:5000/bfhl", {
+      axios.post(`${import.meta.env.VITE_API_URL}/bfhl`, {
         data: arr
       });
 
