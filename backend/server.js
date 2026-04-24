@@ -14,9 +14,9 @@ app.post("/bfhl", (req, res) => {
     const result = processData(data);
 
     res.json({
-      user_id: "yourname_01012000",
-      email_id: "your@email.com",
-      college_roll_number: "YOURROLL123",
+      user_id: "NikitaSaxena_01012000",
+      email_id: "ns1542@srmist.edu.in",
+      college_roll_number: "RA2311008020011",
       ...result
     });
 
