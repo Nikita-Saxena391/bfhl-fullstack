@@ -26,18 +26,26 @@ flowchart LR
 
 A[User Browser] --> B[Frontend React Vite]
 B --> C[Input Form]
-C --> D[POST API]
+C --> D[POST API Request]
 
 D --> E[Backend Express]
-E --> F[processData Logic]
 
-F --> D
-D --> C
+E --> F[Process Data Logic]
 
-C --> G[Tree View and Summary]
+F --> G[Cycle Detection]
+F --> H[Duplicate Detection]
+F --> I[Tree Construction]
 
-B --> H[Vercel]
-E --> I[Render]
+G --> E
+H --> E
+I --> E
+
+E --> J[JSON Response]
+
+J --> K[Tree View and Summary]
+
+B --> L[Vercel Deployment]
+E --> M[Render Deployment] 
 --- 
 ## 📌 Features
 
