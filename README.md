@@ -19,34 +19,73 @@ The backend processes the data and returns structured output, which is displayed
 
 ---
 
-## 🏗️ Architecture
+flowchart TB
 
-```mermaid
-flowchart LR
+%% =======================
+%% CLIENT LAYER
+%% =======================
+subgraph CLIENT["Client Layer"]
+A[User Browser]
+B[React Frontend (Vite)]
+A --> B
+end
 
-A[User Browser] --> B[Frontend - React (Vite)]
-B --> C[Input Form]
+%% =======================
+%% API LAYER
+%% =======================
+subgraph API["API Layer"]
+C[Input Form UI]
+D[REST API /bfhl]
+B --> C
+C --> D
+end
 
-C --> D[POST API Request]
+%% =======================
+%% BACKEND LAYER
+%% =======================
+subgraph BACKEND["Backend Layer"]
+E[Express Server]
 
-D --> E[Backend - Express.js]
+F[Graph Processing Engine]
+F1[Cycle Detection Module]
+F2[Duplicate Detection Module]
+F3[Tree Construction Module]
 
-E --> F[Process Data Logic]
+E --> F
+F --> F1
+F --> F2
+F --> F3
+end
 
-F --> G[Cycle Detection]
-F --> H[Duplicate Detection]
-F --> I[Tree Construction]
+%% =======================
+%% RESPONSE FLOW
+%% =======================
+subgraph RESPONSE["Response Layer"]
+G[Structured JSON Response]
+H[Frontend Renderer]
+I[Tree Visualization + Summary]
+end
 
-G --> E
-H --> E
-I --> E
+D --> E
+F1 --> E
+F2 --> E
+F3 --> E
 
-E --> J[JSON Response]
+E --> G
+G --> H
+H --> I
 
-J --> K[Tree View + Summary UI]
+%% =======================
+%% DEPLOYMENT
+%% =======================
+subgraph DEPLOYMENT["Deployment"]
+J[Vercel - Frontend]
+K[Render - Backend]
+end
 
-B --> L[Vercel Deployment]
-E --> M[Render Deployment] 
+B --> J
+E --> K    
+
 ## 📌 Features
 
 * Convert input relations into tree structures
