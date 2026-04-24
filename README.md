@@ -17,56 +17,49 @@ This project takes input relationships like `A->B` and converts them into hierar
 
 The backend processes the data and returns structured output, which is displayed on the frontend as trees along with a summary. It supports multiple independent trees and ensures that each node has only one parent.
 
----
-
 flowchart TB
 
-%% =======================
-%% CLIENT LAYER
-%% =======================
+%% ===================== CLIENT LAYER =====================
 subgraph CLIENT["Client Layer"]
-A[User Browser]
-B[React Frontend (Vite)]
-A --> B
+    A[User Browser]
+    B[React Frontend (Vite)]
+    A --> B
 end
 
-%% =======================
-%% API LAYER
-%% =======================
+%% ===================== API LAYER =====================
 subgraph API["API Layer"]
-C[Input Form UI]
-D[REST API /bfhl]
-B --> C
-C --> D
+    C[Input Form UI]
+    D[REST API: /bfhl]
+    B --> C
+    C --> D
 end
 
-%% =======================
-%% BACKEND LAYER
-%% =======================
-subgraph BACKEND["Backend Layer"]
-E[Express Server]
+%% ===================== BACKEND LAYER =====================
+subgraph BACKEND["Backend Layer (Node + Express)"]
 
-F[Graph Processing Engine]
-F1[Cycle Detection Module]
-F2[Duplicate Detection Module]
-F3[Tree Construction Module]
+    E[Express Server]
 
-E --> F
-F --> F1
-F --> F2
-F --> F3
+    F[Graph Processing Engine]
+
+    F1[Cycle Detection Module]
+    F2[Duplicate Detection Module]
+    F3[Tree Construction Module]
+
+    E --> F
+    F --> F1
+    F --> F2
+    F --> F3
 end
 
-%% =======================
-%% RESPONSE FLOW
-%% =======================
+%% ===================== RESPONSE LAYER =====================
 subgraph RESPONSE["Response Layer"]
-G[Structured JSON Response]
-H[Frontend Renderer]
-I[Tree Visualization + Summary]
+    G[Structured JSON Response]
+    H[Frontend Renderer]
+    I[Tree Visualization + Summary UI]
 end
 
 D --> E
+
 F1 --> E
 F2 --> E
 F3 --> E
@@ -75,16 +68,14 @@ E --> G
 G --> H
 H --> I
 
-%% =======================
-%% DEPLOYMENT
-%% =======================
+%% ===================== DEPLOYMENT =====================
 subgraph DEPLOYMENT["Deployment"]
-J[Vercel - Frontend]
-K[Render - Backend]
+    J[Vercel - Frontend]
+    K[Render - Backend]
 end
 
 B --> J
-E --> K    
+E --> K
 
 ## 📌 Features
 
