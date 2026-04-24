@@ -17,8 +17,7 @@ This project takes input relationships like `A->B` and converts them into hierar
 
 The backend processes the data and returns structured output, which is displayed on the frontend as trees along with a summary. It supports multiple independent trees and ensures that each node has only one parent.
 
----
-
+```mermaid
 flowchart TB
 
 A[User Browser] --> B[React Frontend]
@@ -38,7 +37,8 @@ J --> K[React Renderer]
 K --> L[Tree Visualization UI]
 
 B --> M[Vercel Deploy]
-E --> N[Render Deploy]  
+E --> N[Render Deploy]
+```
 
 ## 📌 Features
 
