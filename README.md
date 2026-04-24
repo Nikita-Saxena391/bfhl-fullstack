@@ -21,6 +21,7 @@ The backend processes the data and returns structured output, which is displayed
 
 ## 🏗️ Architecture
 
+```mermaid
 flowchart TD
 
 A[User Browser]
@@ -50,7 +51,7 @@ D --> B
 
 B --> H
 E --> I
-
+```
 ## 📌 Features
 
 * Convert input relations into tree structures
