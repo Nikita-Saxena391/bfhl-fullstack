@@ -6,14 +6,14 @@ A full-stack web application that processes relationships like `A->B` and visual
 
 ## 🚀 Live Demo
 
-* 🌐 Frontend: https://bfhl-fullstack-alpha.vercel.app/
-* 🔗 Backend API: https://bfhl-backend-rrer.onrender.com
+- 🌐 Frontend: https://bfhl-fullstack-alpha.vercel.app/
+- 🔗 Backend API: https://bfhl-backend-rrer.onrender.com
 
 ---
 
 ## 📖 About the Project
 
-This project takes input in the form of relationships such as `A->B` and converts them into hierarchical tree structures. It helps visualize parent-child relationships clearly while handling real-world issues like invalid inputs, duplicate edges, and cycles.
+This project takes input relationships like `A->B` and converts them into hierarchical tree structures. It helps visualize parent-child relationships clearly while handling real-world issues like invalid inputs, duplicate edges, and cycles.
 
 The backend processes the data and returns structured output, which is displayed on the frontend as trees along with a summary. It supports multiple independent trees and ensures that each node has only one parent.
 
@@ -24,11 +24,12 @@ The backend processes the data and returns structured output, which is displayed
 ```mermaid
 flowchart LR
 
-A[User Browser] --> B[Frontend React Vite]
+A[User Browser] --> B[Frontend - React (Vite)]
 B --> C[Input Form]
+
 C --> D[POST API Request]
 
-D --> E[Backend Express]
+D --> E[Backend - Express.js]
 
 E --> F[Process Data Logic]
 
@@ -42,11 +43,10 @@ I --> E
 
 E --> J[JSON Response]
 
-J --> K[Tree View and Summary]
+J --> K[Tree View + Summary UI]
 
 B --> L[Vercel Deployment]
 E --> M[Render Deployment] 
---- 
 ## 📌 Features
 
 * Convert input relations into tree structures
