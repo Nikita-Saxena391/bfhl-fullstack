@@ -39,19 +39,16 @@ export function processData(data) {
     childSet.add(child);
   }
 
-  
   const nodes = new Set();
   validEdges.forEach(e => {
     nodes.add(e[0]);
     nodes.add(e[3]);
   });
 
-
   const roots = [...nodes].filter(n => !childSet.has(n));
 
   const hierarchies = [];
 
-  
   function dfs(node, path = new Set()) {
     if (path.has(node)) {
       return { cycle: true };
@@ -59,7 +56,7 @@ export function processData(data) {
 
     path.add(node);
 
-    const children = graph[node] || []; 
+    const children = graph[node] || [];
     let tree = {};
     let maxDepth = 1;
 
@@ -80,29 +77,25 @@ export function processData(data) {
   let largest_tree_root = "";
   let maxDepth = 0;
 
-  
-  if (roots.length === 0 && validEdges.length > 0) {
-    return {
-      hierarchies: [
-        {
-          root: validEdges[0][0],
-          tree: {},
-          has_cycle: true
-        }
-      ],
-      invalid_entries,
-      duplicate_edges,
-      summary: {
-        total_trees: 0,
-        total_cycles: 1,
-        largest_tree_root: ""
-      }
-    };
-  }
+  // ✅ NEW: process ALL nodes (fix for cycles without roots)
+  const visitedGlobal = new Set();
 
-  
-  for (let root of roots) {
-    const result = dfs(root);
+  for (let node of nodes) {
+    if (visitedGlobal.has(node)) continue;
+
+    const result = dfs(node);
+
+    // mark component visited
+    function markVisited(n) {
+      if (visitedGlobal.has(n)) return;
+      visitedGlobal.add(n);
+      const children = graph[n] || [];
+      for (let c of children) markVisited(c);
+    }
+    markVisited(node);
+
+    // choose proper root (if exists)
+    let root = roots.includes(node) ? node : node;
 
     if (result.cycle) {
       total_cycles++;
