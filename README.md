@@ -22,36 +22,23 @@ The backend processes the data and returns structured output, which is displayed
 ## 🏗️ Architecture
 
 ```mermaid
-flowchart TD
+flowchart LR
 
-A[User Browser]
+A[User Browser] --> B[Frontend React Vite]
+B --> C[Input Form]
+C --> D[POST API]
 
-B[Vite React Frontend]
-C[InputForm Component]
-D[TreeView and Summary UI]
+D --> E[Backend Express]
+E --> F[processData Logic]
 
-E[Express Server]
-F[POST bfhl API]
-G[processData Logic]
+F --> D
+D --> C
 
-H[Vercel Deployment]
-I[Render Deployment]
+C --> G[Tree View and Summary]
 
-A --> B
-B --> C
-C -->|Send Input Data| F
-
-F --> G
-G --> F
-
-F -->|JSON Response| C
-
-C --> D
-D --> B
-
-B --> H
-E --> I
-```
+B --> H[Vercel]
+E --> I[Render]
+--- 
 ## 📌 Features
 
 * Convert input relations into tree structures
