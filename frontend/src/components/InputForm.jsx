@@ -10,13 +10,17 @@ export default function InputForm({ setResult }) {
       setLoading(true);
       const arr = input.split(",").map(i => i.trim());
 
-      axios.post(`${import.meta.env.VITE_API_URL}/bfhl`, {
-        data: arr
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/bfhl`,
+        {
+          data: arr
+        }
+      );
 
       setResult(res.data);
     } catch (err) {
       alert("Error fetching data");
+      console.error(err);
     } finally {
       setLoading(false);
     }
