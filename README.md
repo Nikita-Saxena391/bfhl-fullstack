@@ -113,7 +113,7 @@ A->B, B->C, A->C
 
 ```json
 {
-  "user_id": "NikitaSaxena_01012000",
+  "user_id": "nikitasaxena_01012000",
   "email_id": "ns1542@srmist.edu.in",
   "college_roll_number": "RA2311008020011",
   "hierarchies": [...],
