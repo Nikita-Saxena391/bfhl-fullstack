@@ -21,18 +21,17 @@ The backend processes the data and returns structured output, which is displayed
 
 ## 🏗️ Architecture
 
-```mermaid
 flowchart TD
 
 A[User Browser]
 
 B[Vite React Frontend]
 C[InputForm Component]
-D[TreeView + Summary UI]
+D[TreeView and Summary UI]
 
 E[Express Server]
-F[/POST /bfhl API/]
-G[processData() Logic]
+F[POST bfhl API]
+G[processData Logic]
 
 H[Vercel Deployment]
 I[Render Deployment]
@@ -51,9 +50,6 @@ D --> B
 
 B --> H
 E --> I
-```
-
----
 
 ## 📌 Features
 
