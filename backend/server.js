@@ -21,7 +21,7 @@ app.post("/bfhl", (req, res) => {
     });
 
   } catch (err) {
-    console.error(err); // ✅ CORRECT PLACE
+    console.error(err); 
     res.status(500).json({ error: err.message });
   }
 });
